@@ -1,0 +1,15 @@
+bisection <- function(f, a, b, tol = 1e-6, maxit = 100) {
+  if (f(a) * f(b) > 0) stop("f(a) dan f(b) harus berbeda tanda")
+  riwayat <- data.frame()
+  for (i in 1:maxit) {
+    m   <- (a + b) / 2
+    err <- (b - a) / 2
+    riwayat <- rbind(riwayat,
+                     data.frame(iter = i, a = a, b = b, x = m,
+                                fx = f(m), error = err))
+    if (err < tol || f(m) == 0) break
+    if (f(a) * f(m) < 0) b <- m else a <- m
+  }
+  list(metode = "Bisection", akar = m, iterasi = i,
+       error = err, fx = f(m), riwayat = riwayat)
+}
