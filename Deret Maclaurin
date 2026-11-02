@@ -1,0 +1,18 @@
+exp_series <- function(x, n) {
+  
+  k <- 0:(n - 1)
+  sum(x^k / factorial(k))
+}
+ 
+sin_series <- function(x, n) {
+  
+  k <- 0:(n - 1)
+  sum(((-1)^k) * x^(2 * k + 1) / factorial(2 * k + 1))
+}
+ 
+cos_series <- function(x, n) {
+  
+  k <- 0:(n - 1)
+  sum(((-1)^k) * x^(2 * k) / factorial(2 * k))
+}
+
